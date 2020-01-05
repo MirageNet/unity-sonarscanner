@@ -1,52 +1,38 @@
 #!/bin/sh -l
 
-# buildCommand = $1
-# testCommand = $2
-# projectKey = $3
-# projectName = $4
-# sonarHostname = $5
-# sonarOrganisation = $6
-# beginArguments = $7
-# endArguments = $8
-
 set -eu
 
 begin_cmd="/dotnet-sonarscanner begin"
 end_cmd="/dotnet-sonarscanner end"
 
-if [ -n "$3" ]
+if [ -n "$INPUT_PROJECTKEY" ]
 then
-    begin_cmd="$begin_cmd /k:\"$3\""
+    begin_cmd="$begin_cmd /k:\"$INPUT_PROJECTKEY\""
 fi
 
-if [ -n "$4" ]
+if [ -n "$INPUT_PROJECTNAME" ]
 then
-    begin_cmd="$begin_cmd /n:\"$4\""
+    begin_cmd="$begin_cmd /n:\"$INPUT_PROJECTNAME\""
 fi
 
-if [ -n "$5" ]
+if [ -n "$INPUT_SONARHOSTNAME" ]
 then
-    begin_cmd="$begin_cmd /d:sonar.host.url=\"$5\""
+    begin_cmd="$begin_cmd /d:sonar.host.url=\"$INPUT_SONARHOSTNAME\""
 fi
 
-if [ -n "$6" ]
+if [ -n "$INPUT_SONARORGANISATION" ]
 then
-    begin_cmd="$begin_cmd /o:\"$6\""
+    begin_cmd="$begin_cmd /o:\"$INPUT_SONARORGANISATION\""
 fi
 
-if [ -n "$7" ]
+if [ -n "$INPUT_BEGINARGUMENTS" ]
 then
-    begin_cmd="$begin_cmd $7"
+    begin_cmd="$begin_cmd $INPUT_BEGINARGUMENTS"
 fi
 
-if [ -n "$8" ]
+if [ -n "$INPUT_ENDARGUMENTS" ]
 then
-   end_cmd="$end_cmd $8"
-fi
-
-if [ -n "$9" ]
-then
-    begin_cmd="$begin_cmd /d:sonar.coverage.exclusions=\"$9\""
+   end_cmd="$end_cmd $INPUT_ENDARGUMENTS"
 fi
 
 if [ -n "${SONAR_TOKEN}" ]
@@ -57,14 +43,14 @@ fi
 
 sh -c "$begin_cmd"
 
-if [ -n "$1" ]
+if [ -n "$INPUT_BUILDCOMMAND" ]
 then
-    sh -c "$1"
+    sh -c "$INPUT_BUILDCOMMAND"
 fi
 
-if [ -n "$2" ]
+if [ -n "$INPUT_TESTCOMMAND" ]
 then
-    sh -c "$2"
+    sh -c "$INPUT_TESTCOMMAND"
 fi
 
 sh -c "$end_cmd"
