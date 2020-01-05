@@ -25,6 +25,8 @@ RUN echo "deb http://http.us.debian.org/debian/ testing contrib main" >> /etc/ap
     apt-get autoremove -y && \
     dotnet tool install dotnet-sonarscanner --tool-path . --version 4.7.1
 
+COPY --from=gableroux/unity3d:2019.3.0f1 /opt/Unity /opt/Unity
+
 ADD entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
