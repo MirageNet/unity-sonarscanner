@@ -1,4 +1,4 @@
-name: "mono-sonarscanner"
+name: "unity-sonarscanner"
 description: "Run analysis for mono via dotnet-sonarscanner"
 author: "Paul Pacheco <paulpach@gmail.com>"
 
