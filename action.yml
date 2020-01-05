@@ -1,5 +1,5 @@
-name: "dotnet-sonarscanner-mono"
-description: "Run analysis for dotnet core via dotnet-sonarscanner"
+name: "mono-sonarscanner"
+description: "Run analysis for mono via dotnet-sonarscanner"
 author: "Paul Pacheco <paulpach@gmail.com>"
 
 inputs:
