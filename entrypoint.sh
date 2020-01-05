@@ -41,8 +41,6 @@ then
     end_cmd="$end_cmd /d:sonar.login=\"${SONAR_TOKEN}\""
 fi
 
-export FrameworkPathOverride=/usr/lib/mono/4.5
-
 sh -c "$begin_cmd"
 
 if [ -n "$INPUT_BUILDCOMMAND" ]
