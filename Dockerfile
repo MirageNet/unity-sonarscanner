@@ -22,13 +22,14 @@ RUN echo "deb http://http.us.debian.org/debian/ testing contrib main" >> /etc/ap
     apt-get install -y --no-install-recommends default-jre apt-transport-https aspnetcore-runtime-2.1 lsb-release patch && \
     apt-get -t testing install -y --no-install-recommends python3.7 python3-distutils && \
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
-    patch /opt/Unity/Editor/Data/Tools/RoslynScripts/unity_csc.sh unity_csc.sh.patch && \
     python3.7 get-pip.py && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* && \
     apt-get autoremove -y && \
     dotnet tool install dotnet-sonarscanner --tool-path . --version 4.7.1
 
 COPY --from=gableroux/unity3d:2019.3.0f1 /opt/Unity /opt/Unity
+
+RUN patch /opt/Unity/Editor/Data/Tools/RoslynScripts/unity_csc.sh unity_csc.sh.patch
 
 ADD entrypoint.sh /entrypoint.sh
 
