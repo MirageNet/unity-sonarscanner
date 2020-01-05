@@ -1,12 +1,12 @@
 FROM mcr.microsoft.com/dotnet/core/sdk
 
-LABEL "com.github.actions.name"="dotnet-sonarscanner"
-LABEL "com.github.actions.description"="sonarscanner for dotnet core"
+LABEL "com.github.actions.name"="unity-sonarscanner"
+LABEL "com.github.actions.description"="sonarscanner for unity projects"
 LABEL "com.github.actions.icon"="check"
 LABEL "com.github.actions.color"="purple"
 
-LABEL "repository"="https://github.com/Secbyte/dotnet-sonarscanner"
-LABEL "homepage"="https://github.com/Secbyte/dotnet-sonarscanner"
+LABEL "repository"="https://github.com/MirrorNG/unity-sonarscanner"
+LABEL "homepage"="https://github.com/MirrorNG/unity-sonarscanner"
 LABEL "maintainer"="Joshua Duffy <mail@joshuaduffy.org>"
 
 RUN echo "deb http://http.us.debian.org/debian/ testing contrib main" >> /etc/apt/sources.list && \
