@@ -20,6 +20,7 @@ RUN echo "deb http://http.us.debian.org/debian/ testing contrib main" >> /etc/ap
     apt-get install -y --no-install-recommends default-jre apt-transport-https aspnetcore-runtime-2.1 lsb-release && \
     apt-get -t testing install -y --no-install-recommends python3.7 python3-distutils && \
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
+    perl -pi -e 's/VERMIN -gt 7\]/VERMIN -gt 7 ]/' /opt/Unity/Editor/Data/Tools/RoslynScripts/unity_csc.sh && \
     python3.7 get-pip.py && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* && \
     apt-get autoremove -y && \
